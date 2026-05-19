@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { GettingStartedPage } from './pages/gettingStartedPage';
+import { ROUTES } from './constants/routes';
 
 test.describe('Getting Started Page Tests', () => {
   let gettingStartedPage: GettingStartedPage;
@@ -10,11 +11,10 @@ test.describe('Getting Started Page Tests', () => {
   });
 
   test('should verify Installation heading is visible', async () => {
-    await gettingStartedPage.verifyInstallationHeadingIsVisible();
+    await expect(gettingStartedPage.installationHeading).toBeVisible();
   });
 
   test('should verify page URL contains docs/intro', async () => {
-    gettingStartedPage.verifyPageUrl();
-    expect(gettingStartedPage.page.url()).toContain('docs/intro');
+    await expect(gettingStartedPage.page).toHaveURL(ROUTES.docs);
   });
 });

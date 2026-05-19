@@ -10,7 +10,7 @@ test.describe('Playwright Home Page Tests', () => {
   });
 
   test('should verify page title contains Playwright', async () => {
-    await homePage.verifyPageTitle();
+    await expect(homePage.page).toHaveTitle(/Playwright/);
   });
 
   test('should verify Get Started link is visible and clickable', async ({ page }) => {

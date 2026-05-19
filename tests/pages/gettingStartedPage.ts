@@ -1,5 +1,6 @@
-import { Page, expect } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { BasePage } from './basePage';
+import { ROUTES } from '../constants/routes';
 
 export class GettingStartedPage extends BasePage {
   readonly installationHeading = this.page.getByRole('heading', { name: 'Installation' });
@@ -10,15 +11,7 @@ export class GettingStartedPage extends BasePage {
   }
 
   async navigateToGettingStarted() {
-    await this.goto('https://playwright.dev/docs/intro');
-  }
-
-  async verifyInstallationHeadingIsVisible() {
-    await expect(this.installationHeading).toBeVisible();
-  }
-
-  async verifyPageUrl() {
-    expect(this.page.url()).toContain('docs/intro');
+    await this.goto(ROUTES.docs);
   }
 
   async isInstallationHeadingVisible() {

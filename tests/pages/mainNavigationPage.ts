@@ -1,5 +1,6 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { BasePage } from './basePage';
+import { ROUTES } from '../constants/routes';
 
 export class MainNavigationPage extends BasePage {
   readonly docsLink = this.page.getByRole('link', { name: 'Docs' });
@@ -11,12 +12,6 @@ export class MainNavigationPage extends BasePage {
   }
 
   async navigateToHome() {
-    await this.goto('https://playwright.dev/');
-  }
-
-  async assertNavLinkAccessible(link: Locator, expectedName: string) {
-    await expect(link).toHaveRole('link');
-    await expect(link).toBeEnabled();
-    await expect(link).toHaveAccessibleName(expectedName);
+    await this.goto(ROUTES.home);
   }
 }

@@ -17,9 +17,17 @@ test.describe('Main Page Navigation', () => {
     });
 
     await test.step('Accessibility: each link has role=link, is enabled, and has the correct accessible name', async () => {
-      await mainNavPage.assertNavLinkAccessible(mainNavPage.docsLink, 'Docs');
-      await mainNavPage.assertNavLinkAccessible(mainNavPage.apiLink, 'API');
-      await mainNavPage.assertNavLinkAccessible(mainNavPage.cliLink, 'CLI');
+      await expect(mainNavPage.docsLink).toHaveRole('link');
+      await expect(mainNavPage.docsLink).toBeEnabled();
+      await expect(mainNavPage.docsLink).toHaveAccessibleName('Docs');
+
+      await expect(mainNavPage.apiLink).toHaveRole('link');
+      await expect(mainNavPage.apiLink).toBeEnabled();
+      await expect(mainNavPage.apiLink).toHaveAccessibleName('API');
+
+      await expect(mainNavPage.cliLink).toHaveRole('link');
+      await expect(mainNavPage.cliLink).toBeEnabled();
+      await expect(mainNavPage.cliLink).toHaveAccessibleName('CLI');
     });
 
     await test.step('Navigation: Docs link opens /docs/intro', async () => {

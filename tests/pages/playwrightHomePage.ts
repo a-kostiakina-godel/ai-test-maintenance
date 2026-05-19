@@ -1,5 +1,6 @@
-import { Page, expect } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { BasePage } from './basePage';
+import { ROUTES } from '../constants/routes';
 
 export class PlaywrightHomePage extends BasePage {
   readonly getStartedLink = this.page.getByRole('link', { name: 'Get started' });
@@ -10,11 +11,7 @@ export class PlaywrightHomePage extends BasePage {
   }
 
   async navigateToPlaywrightHome() {
-    await this.goto('https://playwright.dev/');
-  }
-
-  async verifyPageTitle() {
-    await expect(this.page).toHaveTitle(/Playwright/);
+    await this.goto(ROUTES.home);
   }
 
   async clickGetStartedLink() {
